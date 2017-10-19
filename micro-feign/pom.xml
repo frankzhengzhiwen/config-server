@@ -1,0 +1,63 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>micro-feign</artifactId>
+	
+	<parent>
+		<groupId>micro</groupId>
+		<artifactId>micro-parent</artifactId>
+		<version>0.0.1</version>
+	</parent>
+	
+	<dependencies>
+	
+		<dependency>
+			<groupId>micro</groupId>
+			<artifactId>micro-web</artifactId>
+			<version>0.0.1</version>
+		</dependency>
+	
+		<!-- Spring Cloud Starter Feign ===> Import from Spring Cloud -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-feign</artifactId>
+		</dependency>
+		<!-- reset dependencies scope import from Undertow runtime -->
+		<dependency>
+			<groupId>com.netflix.ribbon</groupId>
+			<artifactId>ribbon-transport</artifactId>
+			<version>2.2.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.code.findbugs</groupId>
+			<artifactId>jsr305</artifactId>
+			<version>3.0.1</version>
+		</dependency>
+		
+		<!-- Feign OKHttp -->
+		<dependency>
+            <groupId>io.github.openfeign</groupId>
+            <artifactId>feign-okhttp</artifactId>
+        </dependency>
+        
+        <!-- Feign Jackson -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>io.github.openfeign</groupId> -->
+<!-- 			<artifactId>feign-jackson</artifactId> -->
+<!-- 		</dependency> -->
+		
+		<!-- Feign Ribbon -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>io.github.openfeign</groupId> -->
+<!-- 			<artifactId>feign-ribbon</artifactId> -->
+<!-- 		</dependency> -->
+		
+		<!-- Feign Form Spring -->
+<!-- 		<dependency> -->
+<!--             <groupId>io.github.openfeign.form</groupId> -->
+<!--             <artifactId>feign-form-spring</artifactId> -->
+<!--         </dependency> -->
+		
+	</dependencies>
+	
+</project>
