@@ -1,0 +1,54 @@
+debug: ${debug}
+
+server:
+  port: 2222
+
+security:
+  basic:
+    enabled: true
+  user:
+    name: ${registry-config.user.name}
+    password: ${registry-config.user.password}
+
+spring:
+  application:
+    name: ${config.application.name}
+  profiles:
+    include: git
+  cloud:
+    config:
+      server:
+        git:
+          uri: ${config.server.git.uri}
+          username: ${config.server.git.username}
+          password: ${config.server.git.password}
+          search-paths:
+          - "${config.server.git.search-paths}"
+      discovery:
+        enabled: true
+        service-id: ${config.application.name}
+  jackson:
+    serialization:
+      INDENT_OUTPUT: true
+      order-map-entries-by-keys: true
+
+eureka:
+  instance:
+    lease-expiration-duration-in-seconds: 8
+    lease-renewal-interval-in-seconds: 3
+    prefer-ip-address: true
+  client:
+    registry-fetch-interval-seconds: 3
+    healthcheck:
+      enabled: false
+    region: default
+    prefer-same-zone-eureka: false
+    use-dns-for-fetching-service-urls: false
+    initial-instance-info-replication-interval-seconds: 3
+    instance-info-replication-interval-seconds: 5
+    eureka-service-url-poll-interval-seconds: 10
+    service-url:
+      # one eureka server
+      defaultZone: http://${registry-config.user.name}:${registry-config.user.password}@${peer1.ip.address}:${peer1.server.port}/eureka/
+      # two distributed eureka server
+#      defaultZone: http://${registry-config.user.name}:${registry-config.user.password}@${peer1.ip.address}:${peer1.server.port}/eureka/,http://${registry-config.user.name}:${registry-config.user.password}@${peer2.ip.address}:${peer2.server.port}/eureka/
